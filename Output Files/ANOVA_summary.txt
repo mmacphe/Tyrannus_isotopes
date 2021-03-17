@@ -1,0 +1,7 @@
+             Df Sum Sq Mean Sq F value   Pr(>F)    
+Feather       2  16.01   8.006  10.378 0.000243 ***
+IndividualID 20  39.26   1.963   2.544 0.006167 ** 
+Residuals    39  30.09   0.771                     
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+1 observation deleted due to missingness
