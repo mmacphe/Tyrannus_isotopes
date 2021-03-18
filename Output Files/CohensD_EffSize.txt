@@ -1,0 +1,52 @@
+$method
+[1] "Cohen's d"
+
+$name
+[1] "d"
+
+$estimate
+[1] 1.054299
+
+$sd
+[1] 1.166652
+
+$conf.int
+    lower     upper 
+0.3990249 1.7095738 
+
+$var
+[1] 0.1047747
+
+$conf.level
+[1] 0.95
+
+$magnitude
+[1] large
+Levels: negligible < small < medium < large
+
+$method
+[1] "Cohen's d"
+
+$name
+[1] "d"
+
+$estimate
+[1] 0.8008088
+
+$sd
+[1] 1.145271
+
+$conf.int
+    lower     upper 
+0.2030458 1.3985719 
+
+$var
+[1] 0.08747685
+
+$conf.level
+[1] 0.95
+
+$magnitude
+[1] large
+Levels: negligible < small < medium < large
+

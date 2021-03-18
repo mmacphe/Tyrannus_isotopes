@@ -55,6 +55,24 @@ sink('./Output Files/TukeyHSD_summary.txt')
 post_hoc
 sink()
 
+### Compute Cohen's d - effect sizes ###
+require(effsize)
+P1savA<-subset(savana, Feather=="P1")
+P1savB<-P1savA[-c(13),]
+
+S6sav<-subset(savana, Feather=="S6") 
+S6sav<-na.omit(S6sav$Nsig)
+
+R3sav<-subset(savana, Feather=="R3")
+
+P1S6d<-cohen.d(P1savB$Nsig,S6sav, paired=TRUE)
+P1R3d<-cohen.d(P1savA$Nsig,R3sav$Nsig, paired=TRUE)
+
+sink('./Output Files/CohensD_EffSize.txt')
+Effsize<-c(P1S6d,P1R3d)
+Effsize
+sink()
+
 ### Make the boxplot
 require(ggplot2)
 png(file='T_savana_isotopes.png', height=7, width=7, units="in", res=500)
