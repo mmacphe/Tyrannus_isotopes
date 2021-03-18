@@ -67,7 +67,8 @@ p<-ggplot(data=AOV_isotopes2, aes(x=Feather, y=Nsig)) + geom_boxplot(color=col) 
   facet_wrap(~subspecies,labeller=labeller(subspecies= responsevariable.labs)) +
   panel_border() +
   theme_bw() +
-  theme(panel.grid.major=element_blank(), panel.grid.minor=element_blank())
+  theme(panel.grid.major=element_blank(), panel.grid.minor=element_blank()) +
+  labs(y= "dN‰")
 
 draw_plot(p, x = 0, y = 0, width = 1, height = 1)
 ggdraw() +  
