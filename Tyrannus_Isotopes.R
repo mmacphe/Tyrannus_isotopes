@@ -13,7 +13,7 @@ savana<-subset(AOV_isotopes, subspecies=="savana")
 
 ### Check if models that include sex explain more of the variation in isotope results
 lm1sex<-lm(Nsig~Feather+IndividualID, data=savana)
-lm2sex<-lm(Nsig~Feather+Sex+IndividualID, data=savana)
+lm2sex<-lm(Nsig~Feather*Sex+IndividualID, data=savana)
 
 AICsex_output<-AIC(lm1sex,lm2sex)
 AICsex_output<-AICsex_output %>% rename(dfsex = df, AICsex = AIC) #Rename AIC column
@@ -21,14 +21,23 @@ View(AICsex_output)
 
 ### Check if models that include age explain more of the variation in isotope results
 lm1age<-lm(Nsig~Feather+IndividualID, data=savana)
-lm2age<-lm(Nsig~Feather+Age+IndividualID, data=savana)
+lm2age<-lm(Nsig~Feather*Age+IndividualID, data=savana)
 
 AICage_output<-AIC(lm1age,lm2age)
 AICage_output<-AICage_output %>% rename(dfage = df, AICage = AIC) #Rename AIC column
 View(AICage_output)
 
+### Check if models that include year explain more of the variation in isotope results
+lm1year<-lm(Nsig~Feather+IndividualID, data=savana)
+lm2year<-lm(Nsig~Feather*Year+IndividualID, data=savana)
+
+AICyear_output<-AIC(lm1year,lm2year)
+AICyear_output<-AICyear_output %>% rename(dfyear = df, AICyear = AIC) #Rename AIC column
+View(AICage_output)
+
+
 ### Write out output ###
-write.csv(c(AICsex_output,AICage_output), file='./Output Files/AIC_output.csv')
+write.csv(c(AICsex_output,AICage_output,AICyear_output), file='./Output Files/AIC_output.csv')
 
 ### Perform ANOVA on T. s. savana subspecies
 fit_aov<-aov(Nsig~Feather+IndividualID, data=savana)
