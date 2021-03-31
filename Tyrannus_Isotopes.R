@@ -35,7 +35,6 @@ AICyear_output<-AIC(lm1year,lm2year)
 AICyear_output<-AICyear_output %>% rename(dfyear = df, AICyear = AIC) #Rename AIC column
 View(AICage_output)
 
-
 ### Write out output ###
 write.csv(c(AICsex_output,AICage_output,AICyear_output), file='./Output Files/AIC_output.csv')
 
@@ -75,11 +74,14 @@ sink()
 
 ### Make the boxplot
 require(ggplot2)
+require(plyr)
+require(cowplot)
+
 png(file='T_savana_isotopes.png', height=7, width=7, units="in", res=500)
 
 neworder<-c("savana", "monachus")
 neworderF<-c("P1", "S6", "R3")
-library(plyr)
+
 AOV_isotopes2<-arrange(transform(AOV_isotopes, subspecies=factor(subspecies,levels=neworder)),subspecies)
 AOV_isotopes2<-arrange(transform(AOV_isotopes2, Feather=factor(Feather,levels=neworderF)),Feather)
 responsevariable.labs<-c("T. s. savana (n=21)", "T. s. monachus (n=6)")
@@ -104,4 +106,3 @@ ggdraw() +
   draw_plot_label(c("A", "B", "B"), c(0.14, 0.285, 0.43), c(0.95, 0.95, 0.95), size=9)
 
 dev.off()
-
