@@ -54,6 +54,18 @@ sink('./Output Files/TukeyHSD_summary.txt')
 post_hoc
 sink()
 
+### Calculate mean square error and q-value ###
+test2<-HSD.test(fit_aov,trt='Feather') #returns the MSerror and Df
+test2
+
+#<-na.omit(savana)
+N<-length(savana$Nsig) #total sample size
+k<-length(unique(savana$Feather)) #number of treatments
+n<-length(savana$Nsig)/k #number of samples per group
+
+q.value<-qtukey(p=0.95, nmeans=k, df=N-k)
+q.value
+
 ### Compute Cohen's d - effect sizes ###
 require(effsize)
 P1savA<-subset(savana, Feather=="P1")
