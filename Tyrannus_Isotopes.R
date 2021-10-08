@@ -58,7 +58,6 @@ sink()
 test2<-HSD.test(fit_aov,trt='Feather') #returns the MSerror and Df
 test2
 
-#<-na.omit(savana)
 N<-length(savana$Nsig) #total sample size
 k<-length(unique(savana$Feather)) #number of treatments
 n<-length(savana$Nsig)/k #number of samples per group
@@ -90,6 +89,7 @@ require(plyr)
 require(cowplot)
 
 png(file='T_savana_isotopes.png', height=7, width=7, units="in", res=500)
+jpeg(file="T_savana_isotopes.jpg", height=7, width=7, units="in", res=500)
 
 neworder<-c("savana", "monachus")
 neworderF<-c("P1", "S6", "R3")
